@@ -32,6 +32,13 @@ namespace TestAddressBook
             int actual = repo.DeleteDetails("Joey");
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void TestRetrieveCityOrStateTest()
+        {
+            string expected = "Chandler";
+            string actual = repo.RetrieveOnCityOrState("NewYork","Adol");
+            Assert.AreEqual(expected, actual);
+        }
 
     }
 }

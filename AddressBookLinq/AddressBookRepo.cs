@@ -35,13 +35,13 @@ namespace AddressBookLinq
             IterateMethod(details);
             return details.Count;
         }
-        public int EditDetails(int ContactId, string FirstName, double ZipCode)
+        public int EditDetails(int contactId, string firstName, double zipCode)
         {
             AddDetails();
-            AddressBookDetails address = (from a in details where a.ContactId == ContactId && a.FirstName.Equals(FirstName) select a).First();
+            AddressBookDetails address = (from a in details where a.ContactId == contactId && a.FirstName.Equals(firstName) select a).First();
             if (address != null)
             {
-                address.ZipCode = ZipCode;
+                address.ZipCode = zipCode;
                 return 1;
             }
             else
@@ -49,9 +49,10 @@ namespace AddressBookLinq
                 return 0;
             }
         }
-        public int DeleteDetails(string FirstName)
+        public int DeleteDetails(string firstName)
         {
-            AddressBookDetails address = (from a in details where a.FirstName.Equals( FirstName )select a).First();
+            AddDetails();
+            AddressBookDetails address = (from a in details where a.FirstName.Equals( firstName )select a).First();
             if (address != null)
             {
                 details.Remove(address); 
@@ -61,7 +62,17 @@ namespace AddressBookLinq
             {
                 return 0;
             }
-
+        }
+        public string RetrieveOnCityOrState(string city, string state)
+        {
+            AddDetails();
+            string result = "";
+            var res = (from a in details where (a.City == city || a.State == state) select a).ToList();
+            foreach (var r in res)
+            {
+                result += r.FirstName ;
+            }
+            return result;
         }
     }
 }
