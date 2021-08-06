@@ -8,7 +8,7 @@ namespace AddressBookLinq
     public class AddressBookRepo
     {
         List<AddressBookDetails> details;
-        
+
         public AddressBookRepo()
         {
             details = new List<AddressBookDetails>();
@@ -26,7 +26,7 @@ namespace AddressBookLinq
         {
             foreach (AddressBookDetails d in details)
             {
-                Console.WriteLine("Contact Id:{0}\tAddressBookName:{1}\tFirstName:{2}\tLastName:{3}\tAddress:{4}\tState:{5}\tCity:{6}\tZipCode:{7}\tPhoneNumber:{8}\tEmail:{9}\n",d.ContactId,d.AddressBookName,d.FirstName,d.LastName,d.Address,d.State,d.City,d.ZipCode,d.PhoneNumber,d.Email );
+                Console.WriteLine("Contact Id:{0}\tAddressBookName:{1}\tFirstName:{2}\tLastName:{3}\tAddress:{4}\tState:{5}\tCity:{6}\tZipCode:{7}\tPhoneNumber:{8}\tEmail:{9}\n", d.ContactId, d.AddressBookName, d.FirstName, d.LastName, d.Address, d.State, d.City, d.ZipCode, d.PhoneNumber, d.Email);
             }
         }
         public int InsertData()
@@ -35,7 +35,7 @@ namespace AddressBookLinq
             IterateMethod(details);
             return details.Count;
         }
-        public int EditDetails(int ContactId, string FirstName,double ZipCode )
+        public int EditDetails(int ContactId, string FirstName, double ZipCode)
         {
             AddDetails();
             AddressBookDetails address = (from a in details where a.ContactId == ContactId && a.FirstName.Equals(FirstName) select a).First();
@@ -48,6 +48,20 @@ namespace AddressBookLinq
             {
                 return 0;
             }
+        }
+        public int DeleteDetails(string FirstName)
+        {
+            AddressBookDetails address = (from a in details where a.FirstName.Equals( FirstName )select a).First();
+            if (address != null)
+            {
+                details.Remove(address); 
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+
         }
     }
 }
