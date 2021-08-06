@@ -10,9 +10,19 @@ namespace AddressBookLinq
             Console.WriteLine("Address Book Linq!");
             List<AddressBookDetails> details=new List<AddressBookDetails>();
             AddressBookRepo repo = new AddressBookRepo();
-            repo.AddDetails();
-            //repo.IterateMethod(details);
-
+            Console.WriteLine("1.Add Details\n2.Insert New Data");
+            Console.WriteLine("Enter the option: ");
+            int option = Convert.ToInt32(Console.ReadLine());
+            switch (option)
+            {
+                case 1:
+                    repo.AddDetails();
+                    break;
+                case 2:
+                    repo.InsertData();
+                    break;
+            }
+            
         }
     }
 }
