@@ -74,5 +74,16 @@ namespace AddressBookLinq
             }
             return result;
         }
+        public string CountOfAddressBook()
+        {
+            AddDetails();
+            string result = "";
+            var res = details.GroupBy(c => c.City).Select(c => new { ContactId = c.Key, count = c.Count() });
+            foreach (var r in res)
+            {
+                result += "" + r.ContactId + " " + r.count + " ";
+            }
+            return result;
+        }
     }
 }
