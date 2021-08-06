@@ -18,5 +18,12 @@ namespace TestAddressBook
             int actual = repo.InsertData();
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void EditCOntactTest()
+        {
+            int expected = 1;
+            int actual = repo.EditDetails(3,"Joey",7645432);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
