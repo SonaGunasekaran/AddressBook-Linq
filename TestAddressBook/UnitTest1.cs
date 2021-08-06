@@ -19,11 +19,19 @@ namespace TestAddressBook
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void EditCOntactTest()
+        public void TestEditDetails()
         {
             int expected = 1;
             int actual = repo.EditDetails(3,"Joey",7645432);
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void TestDeleteDetails()
+        {
+            int expected = 1;
+            int actual = repo.DeleteDetails("Joey");
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }
