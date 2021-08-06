@@ -85,5 +85,15 @@ namespace AddressBookLinq
             }
             return result;
         }
+        public string SortNameByCity(string city)
+        {
+            string result = "";
+            var res = details.OrderBy(c => c.FirstName).Where(c => c.City == city).ToList();
+            foreach (var r in res)
+            {
+                result += "" + r.FirstName + " ";
+            }
+            return result;
+        }
     }
 }
