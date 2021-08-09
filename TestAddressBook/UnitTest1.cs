@@ -46,10 +46,18 @@ namespace TestAddressBook
             string actual = repo.CountOfAddressBook();
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
         public void TestSortNameByCity()
         {
-            string expected = "jessi tim ";
+            string expected = "Chandler";
             string actual = repo.SortNameByCity("NewYork");
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void TestCountOfType()
+        {
+            string expected = "Family 2 Friends 2 Profession";
+            string actual = repo.CountOfType();
             Assert.AreEqual(expected, actual);
         }
     }
